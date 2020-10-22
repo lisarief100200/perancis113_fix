@@ -1,0 +1,62 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+<div class="">
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="/admin">Admin Page</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavDropdown">
+      <ul class="navbar-nav">
+        <li class="nav-item active">
+          <a class="nav-link" href="/admin">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('addcategory')}}">Tambah Cemilan</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('addproduct')}}">Tambah Produk</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('list_checkout')}}">List Pembeli</a>
+        </li>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{url_for('list_invoice')}}">Ubah Status Pesanan</a>
+        </li>
+        {% if current_user.is_authenticated %}
+        <li class="nav-item">
+          <a href="{{url_for('logout')}}" class="nav-link">Logout</a>
+        </li>
+        {% else %}
+        <li class="nav-item">
+          <a href="{{url_for('home')}}" class="nav-link">Home Page</a>
+        </li>
+
+        {% endif %}
+      </ul>
+      
+    </div>
+  </nav>
+</div>
+<div class="container">
+    <div class="row">
+    <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <h2 class="text-center p-2" style="font-family: 'Lato', sans-serif;">Ubah Status Pesanan</h2>
+        {% from "_formhelpers.html" import render_field %}
+        <form action="" method="POST" enctype="multipart/form-data">
+            {{ render_field(form.status, class='form-control')  }}
+            {{ render_field(form.resi, class='form-control')  }}
+            {{ render_field(form.orders, class="form-control", placeholder="Pesanan", rows="10") }}
+
+            <button type='submit' class='btn btn-outline-info mt-4'>Submit</button>
+        </form>
+    </div>
+    <div class="col-md-2"></div>
+</div>
+</div>
+{% endblock content %}

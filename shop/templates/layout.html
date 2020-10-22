@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="{{url_for('static', filename='css/bootstrap.min.css')}}">
+    <link href="https://fonts.googleapis.com/css2?family=Lato&display=swap" rel="stylesheet">
+    {% if title %}
+    <title>{{title}}</title>
+    {% else %}
+    <title>Nyemil A6</title>
+    {% endif %}
+  </head>
+  <body>
+    <style>
+
+p{
+  font-family: 'Lato', sans-serif;
+}
+
+h5{
+  font-family: 'Lato', sans-serif;
+  font-weight: bold;
+}
+
+.navbar-brand {
+  padding: 0 15px;
+  height: 80px;
+  line-height: 80px;
+}
+
+.navbar-toggle {
+  /* (80px - button height 34px) / 2 = 23px */
+  margin-top: 23px;
+  padding: 9px 10px !important;
+}
+
+.nav-item{
+  font-size: large;
+  font-family: 'Lato', sans-serif;
+}
+
+.card-checkout td {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 10px;
+  font-family: 'Lato', sans-serif;
+}
+
+.card-checkout {
+  background-color: var(--background);
+  display: red;
+  width: 300px;
+  min-height: 90px;
+  border: 3px solid;
+  border-radius: 25px;
+  padding: 15px;
+  font-family: 'Lato', sans-serif;
+}
+
+
+
+    </style>
+    {% block content %}
+
+    {% endblock content %}
+    <!-- Footer -->
+<footer class="page-footer font-small elegant-color">
+
+  <!-- Copyright -->
+  <div class="footer-copyright text-center py-3">© 2020 Copyright:
+    <a class="footerq" href="/">Nyemil A6</a>
+  </div>
+  <!-- Copyright -->
+
+</footer>
+<!-- Footer -->
+    <script src="{{url_for('static', filename='js/jquery-3.5.1.slim.min.js')}}" ></script>
+    <script src="{{url_for('static', filename='js/popper.min.js')}}"></script>
+    <script src="{{url_for('static', filename='js/bootstrap.min.js')}}"></script>
+    <script>
+      function myFunction() {
+        alert("Checkout berhasil dilakukan! Kami akan segera menghubungi Anda");
+      }
+
+      function test(element) {
+        var newTab = window.open();
+        setTimeout(function() {
+            newTab.document.body.innerHTML = element.innerHTML;
+        }, 500);
+        return false;
+    }
+
+      </script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+{% extends 'layout.html' %}
+{% block content %}
+{% include 'navbar.html' %}
+
+<div class="">
+    <div class="row">
+        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            <h1 class="text-center mt-5" style="font-family: 'Lato', sans-serif;"><b>Tracking Invoice</b></h1>
+            {% include "_messages.html" %}
+            <form method="GET">
+                <input type="text" placeholder="Masukkan Invoice" name="search">
+                <button type="submit"><i class="search-container"></i></button>
+            </form>
+            <div class="product-container" style="overflow: auto; max-height: 80vh">
+                <div class="table-responsive">
+                    <table class="table" id="invoice">
+                        <thead>
+                            <tr>
+                                <th scope="col">Invoice</th>
+                                <th scope="col">Status</th>
+                                <th scope="col">No.Resi</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% for i in invoice %}
+                                <td> {{ i.invoice }} </td>
+                                <td> {{ i.status }} </td>
+                                <td> {{ i.resi }} </td>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        </div>
+        </div>
+        </div>
+
+{% endblock content %}

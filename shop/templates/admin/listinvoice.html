@@ -1,0 +1,74 @@
+{% extends 'layout.html' %}
+{% block content %}
+
+{% include '_messages.html' %}
+
+  <div class="">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <a class="navbar-brand" href="/admin">Admin Page</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNavDropdown">
+        <ul class="navbar-nav">
+          <li class="nav-item active">
+            <a class="nav-link" href="/admin">Home <span class="sr-only">(current)</span></a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('addcategory')}}">Tambah Cemilan</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('addproduct')}}">Tambah Produk</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('list_checkout')}}">List Pembeli</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="{{url_for('list_invoice')}}">Ubah Status Pesanan</a>
+          </li>
+          {% if current_user.is_authenticated %}
+          <li class="nav-item">
+            <a href="{{url_for('logout')}}" class="nav-link">Logout</a>
+          </li>
+          {% else %}
+          <li class="nav-item">
+            <a href="{{url_for('logout')}}" class="nav-link">Logout</a>
+          </li>
+  
+          {% endif %}
+        </ul>
+      </div>
+    </nav>
+
+  
+    <h4 class="mt-1 ml-2" style="font-family: 'Lato', sans-serif;"><b>Ubah Status Pesanan</b></h4>
+  <table class="table mt-3 table-striped">
+    <thead>
+      <tr>
+          <th>id</th>
+          <th>invoice</th>
+          <th>Status Pesanan</th>
+          <th>Nomor Resi</th>
+          <th>Order</th>
+          <th>Ubah Status</th>
+      </tr>
+    </thead>
+
+    <tbody>
+        {% for user in cust_invoice %}
+        <tr>
+          <td>{{ user['id'] }}</td>
+           <td>{{ user['invoice'] }}</td>
+           <td>{{ user['status'] }}</td>
+           <td>{{ user['resi'] }} </td>
+           <td>{{ user['orders'] }} </td>
+            </td>
+            <td><a href="{{url_for('updatecheckout', id=user.id)}}" class="btn btn-info btn-sm">Edit</a></td>
+           <tr>
+        {% endfor %}
+    </tbody>
+</table>
+</div>
+
+</div>
+{% endblock content %}

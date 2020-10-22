@@ -1,0 +1,48 @@
+{% extends "layout.html" %}
+
+{% block content %}
+
+<div class="login-form">
+        <div class="container">
+                <div class="card mt-5" style="border-radius:15px">
+                <div class="card-content">
+    {% from "_formhelpers.html" import render_field %}
+    <div class="row">
+        <div class="col-md-4"></div>
+        <div class="col-md-4">
+            
+    <div class="text-center h1 mt-5">Login</div>
+    {% include '_messages.html' %}
+    <form method="post" enctype="multipart/form-data">
+        {{form.csrf_token}}
+    <div>
+
+        {{ render_field(form.email, class="form-control") }}
+        {{ render_field(form.password, class="form-control") }}
+
+    </div>
+
+    <p><input type=submit value="Login" class="btn btn-dark mt-2"></p>
+    </form>
+
+    <p class="text-center">Don't have an account?<a class="text-center" href="{{ url_for('customer_register') }}"> Register now!</a></p>
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Open+Sans" />
+    
+<div class="whole">
+<div class="google-btn">
+  <div class="google-icon-wrapper">
+    <img class="google-icon" src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg"/>
+  </div>
+  <a class="btn-text" href="{{ url_for('customer_register') }}"><b>Sign in with google</b></a>
+</div>
+</div>
+<br>
+    <p class="text-center"><a href="{{url_for('login')}}">Admin?</a></p>
+</div>
+    <div class="col-md-4"></div>
+</div>
+</div>
+</div>
+
+
+{% endblock content %}
